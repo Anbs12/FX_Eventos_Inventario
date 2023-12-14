@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.crear_productos.CrearProductosFragment"
+    android:background="#E5F9FC">
+
+    <!--CREAR PRODUCTOS -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imagen_crear_producto"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/imagen_deprueba"
+                android:elevation="20dp" />
+
+            <EditText
+                android:id="@+id/txt_nomrbeProducto"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/border_radius"
+                android:hint="Ingrese nombre producto"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/txt_descripcionproducto"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/border_radius"
+                android:hint="Ingrese descripcion"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/txt_numero_deLote"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/border_radius"
+                android:hint="Ingrese numero de lote"
+                android:inputType="number" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp">
+                <DatePicker
+                    android:id="@+id/datePicker_fechaVencimiento"
+                    android:layout_width="500dp"
+                    android:layout_height="400dp"
+                    android:visibility="gone"/>
+
+                <EditText
+                    android:layout_height="46dp"
+                    android:id="@+id/txtDate_fechaVencimiento"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/border_radius"
+                    android:hint="Seleccione fecha de vencimiento --->  "/>
+
+                <ImageButton
+                    android:id="@+id/button_fecha_vencimiento"
+                    android:layout_width="59dp"
+                    android:layout_height="match_parent"
+                    android:layout_row="0"
+                    android:layout_column="2"
+                    android:src="@android:drawable/ic_menu_today" />
+
+            </GridLayout>
+
+
+            <EditText
+                android:id="@+id/txt_ubicacion_producto"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/border_radius"
+                android:hint="Ingrese ubicacion del producto(si lo desea)"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/txt_stock_productos"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/border_radius"
+                android:hint="Ingrese stock total"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/button_crear_producto"
+                android:text="Ingresar Datos"
+                android:layout_width="149dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="130dp"
+                android:backgroundTint="#16A7DE"
+                android:elevation="20dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.fxeventosinventario.ui.crear_productos.CrearProductosFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_crear_productos" />
+
+    <fragment
+        android:id="@+id/nav_ver_productos"
+        android:name="com.example.fxeventosinventario.ui.ver_productos.VerProductosFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_ver_productos" />
+
+    <fragment
+        android:id="@+id/nav_lector_qr"
+        android:name="com.example.fxeventosinventario.ui.lector_qr.LectorQrFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_lector_qr" />
+    <fragment
+        android:id="@+id/nav_settingsFragment"
+        android:name="com.example.fxeventosinventario.SettingsFragment"
+        android:label="Configuracion" />
+</navigation>
