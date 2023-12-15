@@ -94,9 +94,9 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun goHome() {
-//Ocultamos el progress
+    //Ocultamos el progress
         mProgressBar.hide()
-//Nos vamos a Home
+    //Nos vamos a Home
         startActivity(Intent(this, MainActivity::class.java))
     }
 
