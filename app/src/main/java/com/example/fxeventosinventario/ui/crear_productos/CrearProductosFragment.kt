@@ -113,18 +113,37 @@ class CrearProductosFragment : Fragment() {
             //val stock = R.id.txt_stock_productos.toInt()
             val stock = _binding!!.txtStockProductos.text.toString()
 
+            if (_binding!!.txtNomrbeProducto.text.isNullOrBlank() ||
+                _binding!!.txtDescripcionproducto.text.isNullOrBlank() ||
+                _binding!!.txtNumeroDeLote.text.isNullOrBlank() ||
+                _binding!!.txtDateFechaVencimiento.text.isNullOrBlank() ||
+                _binding!!.txtUbicacionProducto.text.isNullOrBlank() ||
+                _binding!!.txtStockProductos.text.isNullOrBlank()
+            ) {
+                // Al menos un campo está vacío, mostrar mensaje
+                Toast.makeText(activity, "Faltan datos por ingresar", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } else {
+                // Todos los campos están llenos, continuar con el procesamiento de los datos
+                //val stockInput = _binding!!.txtStockProductos.text.toString()
+                //val stock = stockInput.toInt()
+
+                // Continuar con el procesamiento de los datos...
+            }
+
+
             databaseReference = FirebaseDatabase.getInstance().getReference("informacion producto")
             val producto = Producto(NombreProducto, descripcion, lote, fechaVencimiento,ubicacion, stock)
             databaseReference.child(NombreProducto).setValue(producto).addOnSuccessListener{
                 //R.id.txt_nomrbeProducto.tclear()
 
                 // Limpia los campos de texto después de guardar el producto
-                _binding?.txtNomrbeProducto?.setText("") // Limpia el campo de nombre del producto
-                _binding?.txtDescripcionproducto?.setText("") // Limpia el campo de descripción
-                _binding?.txtNumeroDeLote?.setText("") // Limpia el campo de número de lote
-                _binding?.txtDateFechaVencimiento?.setText("") // Limpia el campo de fecha de vencimiento
-                _binding?.txtUbicacionProducto?.setText("") // Limpia el campo de ubicación
-                _binding?.txtStockProductos?.setText("") // Limpia el campo de stock
+                _binding?.txtNomrbeProducto?.setText("")
+                _binding?.txtDescripcionproducto?.setText("")
+                _binding?.txtNumeroDeLote?.setText("")
+                _binding?.txtDateFechaVencimiento?.setText("")
+                _binding?.txtUbicacionProducto?.setText("")
+                _binding?.txtStockProductos?.setText("")
 
                 // Muestra un mensaje de éxito
                 Toast.makeText(activity, "Producto guardado exitosamente", Toast.LENGTH_SHORT).show()

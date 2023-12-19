@@ -8,4 +8,17 @@
     android:background="#E5F9FC">
 
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listaProductos_recyclerView"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/cardview_item_productos"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
