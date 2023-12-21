@@ -8,12 +8,18 @@ import android.widget.TextView
 import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter(private val productoList : ArrayList<Producto>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(private var productoList : ArrayList<Producto>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+
 
     @SuppressLint("ResourceType")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.cardview_item_productos, parent, false)
         return MyViewHolder(itemView)
+    }
+
+    fun setFilteredList(productoList: ArrayList<Producto>){
+        this.productoList = productoList
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
