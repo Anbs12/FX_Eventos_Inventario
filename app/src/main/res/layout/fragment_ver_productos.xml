@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.ver_productos.VerProductosFragment"
     android:background="#E5F9FC"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/verProductos_fragment_para_button">
 
     <SearchView
         android:id="@+id/txtBuscador"

@@ -1,16 +1,20 @@
 package com.example.fxeventosinventario.ui.ver_productos
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.SearchView
-import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fxeventosinventario.MainActivity
 import com.example.fxeventosinventario.MyAdapter
 import com.example.fxeventosinventario.Producto
 import com.example.fxeventosinventario.R
@@ -21,6 +25,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.util.Locale
+
 
 class VerProductosFragment : Fragment() {
 
@@ -37,12 +42,14 @@ class VerProductosFragment : Fragment() {
     private lateinit var productoArrayList : ArrayList<Producto>
     private lateinit var adaptador : MyAdapter
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel =
+        val VerProductosViewModel =
             ViewModelProvider(this).get(VerProductosViewModel::class.java)
 
         _binding = FragmentVerProductosBinding.inflate(inflater, container, false)
@@ -58,9 +65,12 @@ class VerProductosFragment : Fragment() {
         productoArrayList = arrayListOf<Producto>()
         adaptador = MyAdapter(productoArrayList)
         productoRecyclerView.adapter = adaptador
+
+        //Obtenemos los datos
         getProductoData()
 
 
+        //para searchview
         txt_Buscar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -74,7 +84,12 @@ class VerProductosFragment : Fragment() {
         })
 
 
+
         return root
+    }
+
+    private fun actualizarProducto() {
+
     }
 
     private fun filterList(query : String?){
@@ -89,7 +104,7 @@ class VerProductosFragment : Fragment() {
             if(listaFiltrada.isEmpty()){
                 Toast.makeText(activity, "No se encontraron datos", Toast.LENGTH_SHORT).show()
             }else{
-                //adaptador.setFilteredList(listaFiltrada)
+                //Se almacena el producto por el nombre ingresado el cual es el buscado
                 productoRecyclerView.adapter = MyAdapter(listaFiltrada)
             }
         }
@@ -109,6 +124,7 @@ class VerProductosFragment : Fragment() {
                         productoArrayList.add(producto!!)
                     }
 
+                    //Aqui se almacena la lista para mostrar en el recyclerview
                     productoRecyclerView.adapter = MyAdapter(productoArrayList)
 
                 }

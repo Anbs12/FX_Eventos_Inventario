@@ -82,6 +82,7 @@ class CrearProductosFragment : Fragment() {
 
         txtDate_fechaVencimiento?.setText(getFechaDatePicker())
 
+        //muestra el datepicker calendario
         button_FechaVencimiento?.setOnClickListener {
             muestraCalendario(root)
         }
@@ -96,8 +97,6 @@ class CrearProductosFragment : Fragment() {
 
 
         //crud subir datos
-
-
         button_ingresar_producto.setOnClickListener{
 
             //val NombreProducto = R.id.txt_nomrbeProducto.toString()
