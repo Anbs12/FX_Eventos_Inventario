@@ -36,4 +36,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="actualizar_producto_nota">Nota: Actualice los campos necesarios y
+    luego pulse el botón “Actualizar”.
+
+    Asegúrese de que los datos se han actualizado
+    correctamente.</string>
+
 </resources>

@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.ver_productos.VerProductosFragment"
-    android:background="#E5F9FC">
+    android:background="#E5F9FC"
+    android:orientation="vertical"
+    android:id="@+id/verProductos_fragment_para_button">
+
+    <SearchView
+        android:id="@+id/txtBuscador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border_radius"
+        android:elevation="10dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Ingrese nombre producto"
+        android:queryBackground="@android:color/transparent"/>
+
+    <!--SwipeRefresh para refrescar y actualizar -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listaProductos_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingTop="2dp"
+        android:paddingRight="20dp"
+        tools:listitem="@layout/cardview_item_productos"/>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>
