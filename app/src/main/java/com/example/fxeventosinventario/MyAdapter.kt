@@ -1,25 +1,36 @@
 package com.example.fxeventosinventario
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fxeventosinventario.ActualizarProductosActivity
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
-class MyAdapter(private var productoList : ArrayList<Producto>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(private var productoList : ArrayList<Producto>, private val listener: OnItemClickListener) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
+    private lateinit var databaseReference : DatabaseReference
     @SuppressLint("ResourceType")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.cardview_item_productos, parent, false)
 
         return MyViewHolder(itemView)
+    }
+
+    fun actualizarLista(nuevaLista: ArrayList<Producto>) {
+        productoList.clear()
+        productoList.addAll(nuevaLista)
+        notifyDataSetChanged()
+    }
+
+    interface OnItemClickListener {
+        fun onUpdateClick(position: Int, producto: Producto)
+        fun onDeleteClick(position: Int)
     }
 
     fun setFilteredList(productoList: ArrayList<Producto>){
@@ -30,6 +41,12 @@ class MyAdapter(private var productoList : ArrayList<Producto>) : RecyclerView.A
     override fun getItemCount(): Int {
         return productoList.size
     }
+
+    fun obtenerProductoEnPosicion(position: Int): Producto {
+        return productoList[position]
+    }
+
+
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = productoList[position]
@@ -42,19 +59,20 @@ class MyAdapter(private var productoList : ArrayList<Producto>) : RecyclerView.A
         holder.txtStockProducto.text = currentItem.stock
 
         holder.btn_actualizar.setOnClickListener(){
-            val intent = Intent(holder.itemView.context, ActualizarProductosActivity::class.java)
-            holder.itemView.context.startActivity(intent)
-            
-            Toast.makeText(holder.itemView.context, "Actualiza el producto seleccionado", Toast.LENGTH_SHORT).show()
-
+            //position: indice del cardview seleccionado
+            //currentItem: el ID del producto con el que se quiere interactuar
+            listener.onUpdateClick(position, currentItem)
         }
 
         holder.btn_eliminar.setOnClickListener(){
-            Toast.makeText(holder.itemView.context, "Producto eliminado", Toast.LENGTH_SHORT).show()
+            holder.eliminarProducto(position)
+
+            Toast.makeText(holder.itemView.context, "${currentItem.NombreProducto} eliminado", Toast.LENGTH_SHORT).show()
         }
+
     }
 
-    class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
         //para que funcione todo lo del cardview
         val txtNombreProducto : TextView = itemView.findViewById(R.id.txt_VerNomrbeProducto)
@@ -67,6 +85,54 @@ class MyAdapter(private var productoList : ArrayList<Producto>) : RecyclerView.A
         val btn_actualizar : Button = itemView.findViewById(R.id.btn_actualizarProducto)
         val btn_eliminar : Button = itemView.findViewById(R.id.btn_eliminarProducto)
 
+        //Funcion eliminar un hijo del padre JSON bd firebase
+        fun eliminarProducto(position: Int){
+            var resultado = println("Estado actual:")
+
+            resultado.apply {
+                println("Detalle del estado primera instancia:")
+                println("Primer estado Posicion: $position")
+                println("tamaño de productoList: ${productoList.size}")
+                // Agrega más propiedades según sea necesario
+            }
+
+            if (position >= 0 && position < productoList.size) {
+                val nombreProducto = productoList[position].NombreProducto ?: return
+                val databaseReference = FirebaseDatabase.getInstance().getReference("informacion producto")
+
+                // Elimina el nodo del producto y todos sus hijos
+                databaseReference.child(nombreProducto).removeValue()
+                    .addOnSuccessListener {
+                        Toast.makeText(
+                            itemView.context,
+                            "Producto eliminado: $nombreProducto",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        // No es necesario eliminar manualmente el elemento de la lista
+                        // notifyItemRemoved(position)
+                        notifyDataSetChanged()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(
+                            itemView.context,
+                            "Error al eliminar el producto: $e",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+            } else {
+                // Muestra un mensaje indicando que la posición no es válida
+                Toast.makeText(itemView.context, "Posición no válida", Toast.LENGTH_SHORT).show()
+            }
+
+            resultado.apply {
+                println("Detalle del estado:")
+                println("Posicion(actualizada): $position")
+                println("segundo tamaño de productoList: ${productoList.size}")
+                // Agrega más propiedades según sea necesario
+            }
+        }
 
     }
+
 }

@@ -1,6 +1,6 @@
 package com.example.fxeventosinventario
 
-import java.util.Date
+import java.io.Serializable
 
 data class Producto(
     var NombreProducto: String? = null,
@@ -9,4 +9,4 @@ data class Producto(
     var fechaVencimiento: String? = null,
     var ubicacion : String? = null,
     var stock: String? = null
-)
+) : Serializable

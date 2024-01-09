@@ -8,6 +8,18 @@
     tools:ignore="MissingDefaultResource">
 
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="1dp"
+        android:text="Nombre"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_actualizarNomrbeProducto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textview_actualizar_para"
@@ -52,6 +64,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_actualizar_para" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:text="Descripcion"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_actualizarDescripcion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_actualizarNomrbeProducto" />
+
     <EditText
         android:id="@+id/txt_actualizarDescripcion"
         android:layout_width="match_parent"
@@ -67,6 +91,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_actualizarNomrbeProducto" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:text="Numero de Lote"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_actualizarNumero_deLote"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_actualizarDescripcion" />
+
     <EditText
         android:id="@+id/txt_actualizarNumero_deLote"
         android:layout_width="match_parent"
@@ -81,7 +117,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_actualizarDescripcion" />
-
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -132,6 +167,18 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:text="Ubicacion"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_actualizarUbicacion_producto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     <EditText
         android:id="@+id/txt_actualizarUbicacion_producto"
         android:layout_width="match_parent"
@@ -146,6 +193,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:text="Stock"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_stock_actualizarProductos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_actualizarUbicacion_producto" />
 
     <EditText
         android:id="@+id/txt_stock_actualizarProductos"

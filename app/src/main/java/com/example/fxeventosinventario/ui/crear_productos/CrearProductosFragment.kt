@@ -15,13 +15,10 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.fxeventosinventario.Producto
 import com.example.fxeventosinventario.R
 import com.example.fxeventosinventario.databinding.FragmentCrearProductosBinding
-import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -50,7 +47,6 @@ class CrearProductosFragment : Fragment() {
         _binding = FragmentCrearProductosBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val imagen_subida = root.findViewById<ImageView>(R.id.imagen_crear_producto)
         val button_ingresar_producto = root.findViewById<Button>(R.id.button_crear_producto)
 
         /*val drawerLayout = requireActivity().findViewById<DrawerLayout>(R.id.drawer_layout)
@@ -122,14 +118,7 @@ class CrearProductosFragment : Fragment() {
                 // Al menos un campo está vacío, mostrar mensaje
                 Toast.makeText(activity, "Faltan datos por ingresar", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
-            } else {
-                // Todos los campos están llenos, continuar con el procesamiento de los datos
-                //val stockInput = _binding!!.txtStockProductos.text.toString()
-                //val stock = stockInput.toInt()
-
-                // Continuar con el procesamiento de los datos...
             }
-
 
             databaseReference = FirebaseDatabase.getInstance().getReference("informacion producto")
             val producto = Producto(NombreProducto, descripcion, lote, fechaVencimiento,ubicacion, stock)
@@ -163,6 +152,8 @@ class CrearProductosFragment : Fragment() {
         _binding = null
     }
 
+
+
     fun getFechaDatePicker():String{
         var dia = datePicker_fechaVencimiento?.dayOfMonth.toString().padStart(2, '0')
         var mes = (datePicker_fechaVencimiento!!.month + 1).toString().padStart(2, '0')
@@ -174,4 +165,7 @@ class CrearProductosFragment : Fragment() {
     fun muestraCalendario(view: View){
         datePicker_fechaVencimiento?.visibility = View.VISIBLE
     }
+
+
+
 }

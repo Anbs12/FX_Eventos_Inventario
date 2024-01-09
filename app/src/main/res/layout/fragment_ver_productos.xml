@@ -22,6 +22,12 @@
         android:queryHint="Ingrese nombre producto"
         android:queryBackground="@android:color/transparent"/>
 
+    <!--SwipeRefresh para refrescar y actualizar -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaProductos_recyclerView"
@@ -31,4 +37,9 @@
         android:paddingTop="2dp"
         android:paddingRight="20dp"
         tools:listitem="@layout/cardview_item_productos"/>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 </LinearLayout>
