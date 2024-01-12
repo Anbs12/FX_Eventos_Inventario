@@ -23,7 +23,7 @@ class ActualizarProductosActivity : AppCompatActivity() {
 
     //variables de los EditText
     var txtView_nombreActualizarProducto: TextView? = null
-    var txt_actualizarNomrbeProducto: EditText? = null
+    var txt_actualizarNomrbeProducto: TextView? = null
     var txt_actualizarDescripcion: EditText? = null
     var txt_actualizarNumero_deLote: EditText? = null
     var txt_actualizarUbicacion_producto: EditText? = null
@@ -45,7 +45,6 @@ class ActualizarProductosActivity : AppCompatActivity() {
         databaseReference = FirebaseDatabase.getInstance().reference
         //Llamando a las variables
         txtView_nombreActualizarProducto = findViewById(R.id.txtView_nombreActualizarProducto)
-        txt_actualizarNomrbeProducto = findViewById(R.id.txt_actualizarNomrbeProducto)
         txt_actualizarDescripcion = findViewById(R.id.txt_actualizarDescripcion)
         txt_actualizarNumero_deLote = findViewById(R.id.txt_actualizarNumero_deLote)
         txt_actualizarUbicacion_producto = findViewById(R.id.txt_actualizarUbicacion_producto)
@@ -84,7 +83,7 @@ class ActualizarProductosActivity : AppCompatActivity() {
 
     private fun actualizarProducto() {
         // Obtener datos desde los EditText
-        val nombreproducto = txt_actualizarNomrbeProducto?.text.toString()
+        val nombreproducto = txtView_nombreActualizarProducto?.text.toString()
         val descripcion = txt_actualizarDescripcion?.text.toString()
         val numLote = txt_actualizarNumero_deLote?.text.toString()
         val fecha = txtDate_actualizarFechaVencimiento?.text.toString()
@@ -140,27 +139,6 @@ class ActualizarProductosActivity : AppCompatActivity() {
     }
 
 
-    fun eliminarDatoSeleccionad(){
-        val producto = intent.getSerializableExtra("producto") as? Producto
-        val productoAeliminar = producto?.NombreProducto.toString()
-        // Referencia a la base de datos
-        databaseReference = FirebaseDatabase.getInstance().reference
-        val nodoInformacionProducto = databaseReference.child("Informacion producto")
-
-        // Obtener referencia al nodo del producto que deseas eliminar
-        val nodoProductoAEliminar = nodoInformacionProducto.child(productoAeliminar)
-
-        // Eliminar el nodo del producto
-        nodoProductoAEliminar.removeValue()
-            .addOnSuccessListener {
-                Toast.makeText(this, "Producto eliminado exitosamente", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener { exception ->
-                Toast.makeText(this, "Error al eliminar el producto", Toast.LENGTH_SHORT).show()
-            }
-
-    }
-
     fun getFechaDatePicker(): String {
         var dia = datePicker_actualizarFechaVencimiento?.dayOfMonth.toString().padStart(2, '0')
         var mes = (datePicker_actualizarFechaVencimiento!!.month + 1).toString().padStart(2, '0')
@@ -184,8 +162,8 @@ class ActualizarProductosActivity : AppCompatActivity() {
             // Por ejemplo, puedes mostrar la información del producto en los EditText para editar
             txtView_nombreActualizarProducto?.text = producto.NombreProducto
 
-            val nombre = producto.NombreProducto.toString()
-            txt_actualizarNomrbeProducto?.setText(nombre)
+            /*val nombre = producto.NombreProducto.toString()
+            txt_actualizarNomrbeProducto?.setText(nombre)*/
             val despcripcion = producto.descripcion
             txt_actualizarDescripcion?.setText(despcripcion)
             val lote = producto.lote

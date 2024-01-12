@@ -93,9 +93,6 @@ class VerProductosFragment : Fragment(), MyAdapter.OnItemClickListener {
             swipeRefreshLayout.isRefreshing = false
         }
 
-
-
-
         return root
     }
 
@@ -136,6 +133,7 @@ class VerProductosFragment : Fragment(), MyAdapter.OnItemClickListener {
                     productoRecyclerView.adapter =
                         MyAdapter(productoArrayList, this@VerProductosFragment)
 
+                    println("Array list: ${productoArrayList}")
                 }
             }
 
@@ -144,6 +142,7 @@ class VerProductosFragment : Fragment(), MyAdapter.OnItemClickListener {
             }
 
         })
+
 
     }
 
@@ -190,5 +189,6 @@ class VerProductosFragment : Fragment(), MyAdapter.OnItemClickListener {
             }
         })
     }
+
 
 }

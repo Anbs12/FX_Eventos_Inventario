@@ -57,6 +57,8 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener {
             mostrarSiguienteMensaje()
         }
+
+        onBackPressed()
     }
 
     private fun mostrarSiguienteMensaje() {
@@ -79,6 +81,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
 
     }
 }

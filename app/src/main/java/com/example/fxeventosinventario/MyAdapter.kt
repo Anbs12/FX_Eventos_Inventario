@@ -66,8 +66,6 @@ class MyAdapter(private var productoList : ArrayList<Producto>, private val list
 
         holder.btn_eliminar.setOnClickListener(){
             holder.eliminarProducto(position)
-
-            Toast.makeText(holder.itemView.context, "${currentItem.NombreProducto} eliminado", Toast.LENGTH_SHORT).show()
         }
 
     }
