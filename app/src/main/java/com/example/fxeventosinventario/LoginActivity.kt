@@ -9,8 +9,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.util.PatternsCompat
-import com.example.fxeventosinventario.ui.crear_productos.CrearProductosFragment
-import com.example.fxeventosinventario.ui.crear_productos.CrearProductosViewModel
 import com.google.firebase.auth.FirebaseAuth
 import java.util.regex.Pattern
 import kotlin.properties.Delegates
@@ -42,9 +40,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
 
 //Ahora vamos a Iniciar sesión con firebase es muy sencillo
 

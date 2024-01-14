@@ -1,14 +1,13 @@
 {
   "project_info": {
-    "project_number": "1053181058752",
-    "firebase_url": "https://fx-eventos-inventario-default-rtdb.firebaseio.com",
-    "project_id": "fx-eventos-inventario",
-    "storage_bucket": "fx-eventos-inventario.appspot.com"
+    "project_number": "617925999298",
+    "project_id": "fx-eventos-inventario-90dd9",
+    "storage_bucket": "fx-eventos-inventario-90dd9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1053181058752:android:57b49ae4871f23a13c5725",
+        "mobilesdk_app_id": "1:617925999298:android:75365f7b5e195fd772d95b",
         "android_client_info": {
           "package_name": "com.example.fxeventosinventario"
         }
@@ -16,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD1MFo8Hg6Dnxc8CRIHWEZXtewzlSavHYo"
+          "current_key": "AIzaSyA5hcZ10331iX1TbKTrRi1cOro5fvkwYzM"
         }
       ],
       "services": {

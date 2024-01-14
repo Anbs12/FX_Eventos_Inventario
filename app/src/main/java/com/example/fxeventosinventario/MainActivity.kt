@@ -1,5 +1,6 @@
 package com.example.fxeventosinventario
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
@@ -58,7 +59,6 @@ class MainActivity : AppCompatActivity() {
             mostrarSiguienteMensaje()
         }
 
-        onBackPressed()
     }
 
     private fun mostrarSiguienteMensaje() {
@@ -80,8 +80,9 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
-        super.onBackPressed()
-
+        // super.onBackPressed() // No llames a super.onBackPressed() si no quieres que haga nada por defecto
     }
+
 }
