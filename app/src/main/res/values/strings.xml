@@ -42,4 +42,9 @@
     Asegúrese de que los datos se han actualizado
     correctamente.</string>
 
+
+    <string name="darkmode">Modo Oscuro</string>
+    <string name="darkmodeOn">Activado</string>
+    <string name="darkmodeOff">Desactivado</string>
+
 </resources>

@@ -93,9 +93,6 @@ class VerProductosFragment : Fragment(), MyAdapter.OnItemClickListener {
             swipeRefreshLayout.isRefreshing = false
         }
 
-
-
-
         return root
     }
 
@@ -136,14 +133,15 @@ class VerProductosFragment : Fragment(), MyAdapter.OnItemClickListener {
                     productoRecyclerView.adapter =
                         MyAdapter(productoArrayList, this@VerProductosFragment)
 
+                    println("Array list: ${productoArrayList}")
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
             }
 
         })
+
 
     }
 
@@ -190,5 +188,6 @@ class VerProductosFragment : Fragment(), MyAdapter.OnItemClickListener {
             }
         })
     }
+
 
 }

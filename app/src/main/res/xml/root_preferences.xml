@@ -30,6 +30,15 @@
             app:summaryOn="@string/attachment_summary_on"
             app:title="@string/attachment_title" />
 
+        <SwitchPreferenceCompat
+            app:key="dark_mode"
+            app:title="@string/darkmode"
+            app:summaryOff="@string/darkmodeOff"
+            app:summaryOn="@string/darkmodeOn"
+            app:defaultValue="false"
+            app:useSimpleSummaryProvider="true" />
+            <!--app:icon="@drawable/ic_dark_mode" (esta linea va en SwitchpreferenceCompat-->
+
     </PreferenceCategory>
 
 </PreferenceScreen>
