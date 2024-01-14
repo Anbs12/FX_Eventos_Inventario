@@ -1,8 +1,10 @@
 package com.example.fxeventosinventario
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -14,11 +16,16 @@ import com.example.fxeventosinventario.databinding.ActivityMainBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var auth: FirebaseAuth
+
+
 
     private val mensajes = arrayOf(
         "Que tengas un buen dia!"
@@ -31,6 +38,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Inicializa Firebase Auth
+        auth = FirebaseAuth.getInstance()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -59,6 +69,8 @@ class MainActivity : AppCompatActivity() {
             mostrarSiguienteMensaje()
         }
 
+
+
     }
 
     private fun mostrarSiguienteMensaje() {
@@ -79,6 +91,29 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_settings -> {
+                // Llama a la función de cierre de sesión
+                signOut()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun signOut() {
+        // Realiza el cierre de sesión
+        auth.signOut()
+
+        // Redirige a la pantalla de inicio de sesión o a la pantalla principal, según tu aplicación
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        finish()
+    }
+
 
     @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
