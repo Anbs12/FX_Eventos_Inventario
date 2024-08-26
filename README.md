@@ -1,6 +1,6 @@
-¡Hola!
+¡Hi there!
 
-Proyecto Gestor de Inventario hecho para FX_Eventos.
+Project Inventory Manager made for FX_Eventos.
 
 ![login_fxEventos](https://github.com/Anbs12/FX_Eventos_Inventario/assets/118308826/d50d935f-2c25-4b4c-81a9-894c09b7e3a7)
 
